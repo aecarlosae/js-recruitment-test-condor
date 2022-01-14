@@ -10,9 +10,54 @@ class App {
     constructor() {
         this.todo = new Todo();
         this.addTaskListener();
-        this.renderTodoList();
         this.addSearchListener();
         this.addListSwitcherListener();
+        this.addSortListener();
+        this.renderTodoList();
+    }
+
+    addTaskListener() {
+        let self = this;
+        document.querySelector('#rt-add-task-btn').addEventListener('click', () => {
+            if (self.todo.CREATING) {
+                return;
+            }
+
+            document.querySelector('.rt-no-tasks-yet').classList.add('hidden');
+
+            var tplContent = document.querySelector('template').content;
+            let itemTpl = tplContent.querySelector('.rt-todo-app-editing-item-tpl').cloneNode(true);
+            let list = document.querySelector('#todo-list');
+            let li = document.createElement('li');
+
+            li.appendChild(itemTpl);
+            list.insertBefore(li, list.querySelectorAll('li')[0]);
+
+            self.todo.CREATING = true;
+            itemTpl.querySelector('.rt-content-field').focus();
+
+            itemTpl.querySelector('.rt-delete-link').addEventListener('click', (event) => {
+                event.target.closest('ul').removeChild(
+                    event.target.closest('.rt-todo-app-editing-item-tpl').parentNode
+                );
+                self.todo.CREATING = false;
+            });
+
+            itemTpl.querySelector('.rt-reset-link').addEventListener('click', (event) => {
+                itemTpl.querySelector('.rt-content-field').value = '';
+            });
+
+            // Add listener
+            itemTpl.querySelector('.rt-add-link').addEventListener('click', () => {
+                self.saveTodo(itemTpl, li);
+            });
+
+            itemTpl.querySelector('.rt-content-field').addEventListener('keyup', (event) => {
+                if (event.key === 'Enter' || event.keyCode === 13) {
+                    self.saveTodo(itemTpl, li);
+                }
+            });
+        });
     }
 
     addSearchListener() {
@@ -65,47 +110,25 @@ class App {
         });
     }
 
-    addTaskListener() {
+    addSortListener() {
         let self = this;
-        document.querySelector('#rt-add-task-btn').addEventListener('click', () => {
-            if (self.todo.CREATING) {
-                return;
-            }
 
-            document.querySelector('.rt-no-tasks-yet').classList.add('hidden');
+        document.querySelector('.rt-todo-sort-desc').addEventListener('click', (event) => {
+            document.querySelector('.rt-todo-sort-desc').classList.add('hidden');
+            document.querySelector('.rt-todo-sort-asc').classList.remove('hidden');
+            document.querySelector('#todo-list').innerHTML = '';
+            self.renderTodoList(
+                self.todo.todos.sort((a, b) => a.content.toLowerCase() > b.content.toLowerCase() ? 1 : -1)
+            );
+        });
 
-            var tplContent = document.querySelector('template').content;
-            let itemTpl = tplContent.querySelector('.rt-todo-app-editing-item-tpl').cloneNode(true);
-            let list = document.querySelector('#todo-list');
-            let li = document.createElement('li');
-
-            li.appendChild(itemTpl);
-            list.insertBefore(li, list.querySelectorAll('li')[0]);
-
-            self.todo.CREATING = true;
-            itemTpl.querySelector('.rt-content-field').focus();
-
-            itemTpl.querySelector('.rt-delete-link').addEventListener('click', (event) => {
-                event.target.closest('ul').removeChild(
-                    event.target.closest('.rt-todo-app-editing-item-tpl').parentNode
-                );
-                self.todo.CREATING = false;
-            });
-
-            itemTpl.querySelector('.rt-reset-link').addEventListener('click', (event) => {
-                itemTpl.querySelector('.rt-content-field').value = '';
-            });
-
-            // Add listener
-            itemTpl.querySelector('.rt-add-link').addEventListener('click', () => {
-                self.saveTodo(itemTpl, li);
-            });
-
-            itemTpl.querySelector('.rt-content-field').addEventListener('keyup', (event) => {
-                if (event.key === 'Enter' || event.keyCode === 13) {
-                    self.saveTodo(itemTpl, li);
-                }
-            });
+        document.querySelector('.rt-todo-sort-asc').addEventListener('click', (event) => {
+            document.querySelector('.rt-todo-sort-desc').classList.remove('hidden');
+            document.querySelector('.rt-todo-sort-asc').classList.add('hidden');
+            document.querySelector('#todo-list').innerHTML = '';
+            self.renderTodoList(
+                self.todo.todos.sort((a, b) => a.content.toLowerCase() < b.content.toLowerCase() ? 1 : -1)
+            );
         });
     }
 

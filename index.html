@@ -13,16 +13,23 @@
             <header class="grid grid-cols-6 gap-x-2 md:gap-x-6 items-center px-4">
                 <h2 class="col-span-6 py-2 md:col-span-1 md:py-0 text-center md:text-justify">TODO APP</h2>
                 <input type="text" placeholder="Search" class="rt-todo-search col-span-4 border-b px-2 py-1">
-                <div class="grid grid-cols-2 md:grid-cols-2 justify-items-center items-center col-span-2 md:col-span-1">
-                    <div class="col-span-2">
+                <div class="grid grid-cols-2 md:grid-cols-2 justify-items-center items-center col-span-2 md:col-span-1 px-2 py-1">
+                    <div>
                         <a class="rt-done-list text-blue-600 text-sm cursor-pointer">Done List</a>
                         <a class="rt-all-list hidden text-blue-600 text-sm cursor-pointer">All</a>
                     </div>
-                    <!-- <a href="#" aria-label="Sort">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
-                            <path d="M312 384h-48a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm64-96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h112a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zM504 96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h240a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm-64 96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h176a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zM120.44 35.51a11.94 11.94 0 0 0-16.87 0l-84 82.32a12 12 0 0 0-.09 17l5.61 5.68a11.93 11.93 0 0 0 16.91.09l54-52.74V472a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8V88.08l53.94 52.35a12 12 0 0 0 16.92 0l5.64-5.66a12 12 0 0 0 0-17z"></path>
-                        </svg>
-                    </a> -->
+                    <div>
+                        <a href="#" aria-label="Sort" class="rt-todo-sort-desc">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                <path d="M312 384h-48a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm64-96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h112a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zM504 96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h240a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm-64 96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h176a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zM120.44 35.51a11.94 11.94 0 0 0-16.87 0l-84 82.32a12 12 0 0 0-.09 17l5.61 5.68a11.93 11.93 0 0 0 16.91.09l54-52.74V472a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8V88.08l53.94 52.35a12 12 0 0 0 16.92 0l5.64-5.66a12 12 0 0 0 0-17z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Sort" class="rt-todo-sort-asc hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                <path d="M264 320h176a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm0-192h48a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8h-48a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm0 96h112a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm240 160H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h240a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm-305.07-12.44a11.93 11.93 0 0 0-16.91-.09l-54 52.67V40a8 8 0 0 0-8-8H104a8 8 0 0 0-8 8v383.92l-53.94-52.35a12 12 0 0 0-16.92 0l-5.64 5.66a12 12 0 0 0 0 17l84.06 82.3a11.94 11.94 0 0 0 16.87 0l84-82.32a12 12 0 0 0 .09-17z"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </header>
             <section class="flex flex-col">
