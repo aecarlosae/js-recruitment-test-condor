@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="description" content="Recruitment test | Condor Digital Agency | Carlos Espinoza">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Recruitment test | Condor Digital Agency | Carlos Espinoza</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body class="font-sans">
+        <div id="main">
+            <header class="grid grid-cols-6 gap-x-2 md:gap-x-6 items-center px-4">
+                <h2 class="col-span-6 py-2 md:col-span-1 md:py-0 text-center md:text-justify">TODO APP</h2>
+                <input type="text" placeholder="Search" class="rt-todo-search col-span-4 border-b px-2 py-1">
+                <div class="grid grid-cols-2 md:grid-cols-2 justify-items-center items-center col-span-2 md:col-span-1">
+                    <div class="col-span-2">
+                        <a class="rt-done-list text-blue-600 text-sm cursor-pointer">Done List</a>
+                        <a class="rt-all-list hidden text-blue-600 text-sm cursor-pointer">All</a>
+                    </div>
+                    <!-- <a href="#" aria-label="Sort">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                            <path d="M312 384h-48a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm64-96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h112a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zM504 96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h240a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zm-64 96H264a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h176a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8zM120.44 35.51a11.94 11.94 0 0 0-16.87 0l-84 82.32a12 12 0 0 0-.09 17l5.61 5.68a11.93 11.93 0 0 0 16.91.09l54-52.74V472a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8V88.08l53.94 52.35a12 12 0 0 0 16.92 0l5.64-5.66a12 12 0 0 0 0-17z"></path>
+                        </svg>
+                    </a> -->
+                </div>
+            </header>
+            <section class="flex flex-col">
+                <p class="rt-no-tasks-yet text-center p-8 hidden">No task yet!</p>
+                <ul class="py-4 px-4 mb-7" id="todo-list">
+                    
+                </ul>
+
+                <div class="flex fixed bottom-4 mx-auto inset-x-4">
+                    <button class="flex-grow bg-gray-300 rounded-sm px-2 py-1" id="rt-add-task-btn">Add</button>
+                </div>
+            </section>
+        </div>
+
+        <template>
+            <div class="rt-todo-app-editing-item-tpl flex gap-x-2 items-center my-4">
+                <input type="checkbox" aria-label="Mark as Done" class="rt-mark-as-done">
+
+                <div class="flex flex-col flex-grow">
+                    <label class="text-gray-600">Text content</label>
+                    <div class="flex items-center gap-x-2">
+                        <input type="text" placeholder="Enter your text" class="rt-content-field border-b flex-grow px-2 py-1">
+                        
+                        <div class="grid grid-cols-3 grid-flow-col gap-x-2 justify-items-center">
+                            <a class="rt-reset-link cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4">
+                                    <path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path>
+                                </svg>
+                            </a>
+
+                            <a class="rt-add-link cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4">
+                                    <path d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"></path>
+                                </svg>
+                            </a>
+
+                            <a class="rt-delete-link cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4">
+                                    <path d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rt-todo-app-item-tpl flex gap-x-2 items-center my-4">
+                <input type="checkbox" aria-label="Mark as Done" class="rt-mark-as-done">
+
+                <div class="flex flex-grow items-center gap-x-2">
+                    <p class="rt-todo-app-todo-content text-justify flex-grow "></p>
+                    
+                    <div class="grid grid-flow-col gap-x-1 w-1/6 md:w-1/12 justify-items-center">
+                        <a aria-label="Edit" class="rt-edit-link cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                <path d="M493.25 56.26l-37.51-37.51C443.25 6.25 426.87 0 410.49 0s-32.76 6.25-45.26 18.74L12.85 371.12.15 485.34C-1.45 499.72 9.88 512 23.95 512c.89 0 1.78-.05 2.69-.15l114.14-12.61 352.48-352.48c24.99-24.99 24.99-65.51-.01-90.5zM126.09 468.68l-93.03 10.31 10.36-93.17 263.89-263.89 82.77 82.77-263.99 263.98zm344.54-344.54l-57.93 57.93-82.77-82.77 57.93-57.93c6.04-6.04 14.08-9.37 22.63-9.37 8.55 0 16.58 3.33 22.63 9.37l37.51 37.51c12.47 12.48 12.47 32.78 0 45.26z" class="">
+                                </path>
+                            </svg>
+                        </a>
+
+                        <a aria-label="Remove" class="rt-delete-link cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4">
+                                <path d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <script type="module" src="js/App.js"></script>
+    </body>
+</html>
