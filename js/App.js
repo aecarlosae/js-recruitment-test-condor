@@ -55,7 +55,7 @@ class App {
             if (self.todo.todos.length == 0) {
                 return;
             }
-            
+
             document.querySelector('.rt-no-tasks-yet').classList.add('hidden');
 
             document.querySelector('#todo-list').innerHTML = '';
@@ -71,6 +71,8 @@ class App {
             if (self.todo.CREATING) {
                 return;
             }
+
+            document.querySelector('.rt-no-tasks-yet').classList.add('hidden');
 
             var tplContent = document.querySelector('template').content;
             let itemTpl = tplContent.querySelector('.rt-todo-app-editing-item-tpl').cloneNode(true);
