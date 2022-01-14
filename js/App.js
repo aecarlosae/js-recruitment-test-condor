@@ -114,6 +114,8 @@ class App {
         let self = this;
 
         document.querySelector('.rt-todo-sort-desc').addEventListener('click', (event) => {
+            document.querySelector('.rt-no-tasks-yet').classList.add('hidden');
+
             document.querySelector('.rt-todo-sort-desc').classList.add('hidden');
             document.querySelector('.rt-todo-sort-asc').classList.remove('hidden');
             document.querySelector('#todo-list').innerHTML = '';
@@ -123,6 +125,8 @@ class App {
         });
 
         document.querySelector('.rt-todo-sort-asc').addEventListener('click', (event) => {
+            document.querySelector('.rt-no-tasks-yet').classList.add('hidden');
+            
             document.querySelector('.rt-todo-sort-desc').classList.remove('hidden');
             document.querySelector('.rt-todo-sort-asc').classList.add('hidden');
             document.querySelector('#todo-list').innerHTML = '';
